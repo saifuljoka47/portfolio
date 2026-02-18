@@ -167,7 +167,7 @@ footer {
 </section>
 
 <section id="skills">
-    <h2>Core Skills</h2>
+    <h2><span id="typing1"></span></h2>
 
     <div class="cards">
         <div class="card">
@@ -209,7 +209,7 @@ footer {
 </section>
 
 <section id="experience">
-  <h2>Professional Experience</h2>
+  <h2><span id="typing2"></span></h2>
 
   <div class="cards">
 
@@ -325,6 +325,32 @@ function typing(){
     }
 }
 typing();
+</script>
+
+    <script>
+const text = "Core Skills";
+let i = 0;
+function typing1(){
+    if(i < text.length){
+        document.getElementById("typing1").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing1, 100);
+    }
+}
+typing1();
+</script>
+
+    <script>
+const text = "Professional Experience";
+let i = 0;
+function typing2(){
+    if(i < text.length){
+        document.getElementById("typing2").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing2, 100);
+    }
+}
+typing2();
 </script>
 
 </html>
