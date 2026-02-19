@@ -321,23 +321,49 @@ function typing(){
 }
 typing();
 </script>
-
 <script>
-function typeEffect(elementId, text, speed = 50) {
-    let i = 0;
+// Typing function
+function typeEffect(element, text, speed = 50) {
+    let index = 0;
     function typing() {
-        if (i < text.length) {
-            document.getElementById(elementId).innerHTML += text.charAt(i);
-            i++;
+        if (index < text.length) {
+            element.innerHTML += text.charAt(index);
+            index++;
             setTimeout(typing, speed);
         }
     }
     typing();
 }
 
-typeEffect("skills-title", "Core Skills");
-typeEffect("experience-title", "Professional Experience");
-typeEffect("education-title", "Education | Certifications");
+// Intersection Observer Setup
+const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.5  // Typing starts when section is half visible
+};
+
+function createObserver(id, text) {
+    const target = document.getElementById(id);
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Start typing effect
+                typeEffect(target, text);
+                observer.unobserve(entry.target); // Only once
+            }
+        });
+    }, options);
+
+    observer.observe(target);
+}
+
+// Scroll triggered typing
+createObserver("skills-title", "Core Skills");
+createObserver("experience-title", "Professional Experience");
+createObserver("education-title", "Education & Certifications");
 </script>
+
+
 
 </html>
