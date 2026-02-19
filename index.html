@@ -167,8 +167,7 @@ footer {
 </section>
 
 <section id="skills">
-    <h2>Core Skills</h2>
-
+    <h2 id="skills-title"></h2>
     <div class="cards">
         <div class="card">
             <h3>Networking & Security</h3>
@@ -209,10 +208,8 @@ footer {
 </section>
 
 <section id="experience">
-  <h2>Professional Experience</h2>
-
+  <h2 id="experience-title"></h2>
   <div class="cards">
-
     <div class="card">
       <h3>Senior Executive – IT</h3>
       <p><strong>Liberty Knitwear Ltd.</strong> | 2021 – Present</p>
@@ -250,10 +247,8 @@ footer {
 
 
 <section id="education">
-<h2>Education | Certifications</h2>
-
+<h2 id="education-title"></h2>
 <div class="cards">
-
 <div class="card">
 <h3>BSc in EEE</h3>
 <p>Sonargaon University | CGPA 3.47</p>
@@ -326,4 +321,23 @@ function typing(){
 }
 typing();
 </script>
+
+<script>
+function typeEffect(elementId, text, speed = 50) {
+    let i = 0;
+    function typing() {
+        if (i < text.length) {
+            document.getElementById(elementId).innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+    typing();
+}
+
+typeEffect("skills-title", "Core Skills");
+typeEffect("experience-title", "Professional Experience");
+typeEffect("education-title", "Education | Certifications");
+</script>
+
 </html>
